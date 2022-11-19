@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Anglersking极简地面站</title>
+	</head>
+	<body>
+		<label style=''>Mavlink_Gound_simple<br>
+		<label>适配pixhawk2.4.8</label><br>
+		<label >非最终版本，Demo示例无UI 仅供参考，起飞前一定要有GPS!!!!! 若配置GPS坐标，请设置为当前GPS 否则丢失 空旷地方，遥控器保持连接可以覆盖web指令</label><br>
+		<label >by Anglersking Wanshan.Pang</label><br><br>
+		<label>本示例可对接 MAVLINK MAVROS 需要对应adaptor</label><br><br>
+		 <button type="button" onclick="show('arm')">解锁</button><br><br> 
+		 <button type="button" onclick="show('disarm')">锁定(飞行状态下勿用)</button><br><br>
+		 
+		 <label >自检参数</label><br>
+		 <textarea id="check_state">STATE NULL </textarea><br><br>
+		 <label for="">高度默认(3M)</label><input id="alt" value=3 type="number">
+		 <button id="btn"  onclick="show('take_off')" >起飞</button><br>
+		 <button id="btn"  onclick="show('land')" >降落</button>
+		 <button id="btn"  onclick="show('front')" >向前</button>
+		 <button id="btn"  onclick="show('back')" >向后</button>
+		 <button id="btn"  onclick="show('left')" >向左</button>
+		 <button id="btn"  onclick="show('right')" >向右</button>
+		 <button id="btn"  onclick="show('high')" >升高</button>
+		 <button id="btn"  onclick="show('low')" >下降</button>
+		 <button id="btn"  onclick="show('left_cirl')" >左旋转</button>
+		 <button id="btn"  onclick="show('right_cirl')" >右旋转</button> 
+		</label><br>
+		
+		<lable id="stream" style=""> 视频流 </lable><br>
+		 <button id="btn"  onclick="video()" >视频流</button> 
+		<!-- <label id="image" for=""> -->
+		
+	<img id="stream" src="http://192.168.63.154:81/stream">
+		</label>
+	
+		 <script  src="./js/http_mavlink.js"></script>
+		
+	</body>
+	<script type="text/javascript">
+		
+			function show(msg) {
+				
+				
+			    alt_value=document.getElementById("alt").value
+				console.log("value",alt_value)
+				
+				// alert(msg)
+				HTTP_POST(msg,alt_value);
+				
+			}
+			function video()
+			{
+				
+			}
+			</script>
+</html>
